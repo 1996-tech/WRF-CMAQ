@@ -4,7 +4,7 @@ Installtion: Full process is described by USEPA (link- https://github.com/USEPA/
 rest of the process will remain same. 
 Environmental Setup/tools: intel 25.0
                      openmpi 4.* upper
-Run scripts: (CRACMM) version 2 including updated formaldehyde chemistry impacting ozone and secondary organic aerosol formation.
+Run scripts: (CRACMM) version 1 including updated formaldehyde chemistry impacting ozone and secondary organic aerosol formation.
              script: 
              Community Regional Atmospheric Chemistry Multiphase Mechanism version 2.0
              script: run_cctm_Bench_2018_12NE3_CRACMM2.csh
