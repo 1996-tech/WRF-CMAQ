@@ -1,4 +1,8 @@
 WRF-CMAQ
 CMAQ 5.5
-Installtion: Full process is described by USEPA (link- https://github.com/USEPA/CMAQ/blob/main/DOCS/Users_Guide/CMAQ_UG_ch05_running_a_simulation.md). However, the process can vary in different Operating system of HPCs. I have modified the installation process for intel 25.0 compiler. The major modifications are included in   
- 
+Installtion: Full process is described by USEPA (link- https://github.com/USEPA/CMAQ/blob/main/DOCS/Users_Guide/CMAQ_UG_ch05_running_a_simulation.md). However, the process can vary in different Operating system of HPCs. I have modified the installation process for intel 25.0 compiler. The major modifications are included in config_cmaq.csh.save. The   
+rest of the process will remain same. 
+Environmental Setup/tools: intel 25.0
+                     openmpi 4.* upper
+Run scripts: (CRACMM) version 2 including updated formaldehyde chemistry impacting ozone and secondary organic aerosol formation.
+              
