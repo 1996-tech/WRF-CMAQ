@@ -33,7 +33,7 @@ setenv GRID_NAME ${GRID_NAME}
 setenv CTM_BIOGEMIS 1     # 1 = BEIS inline; 2 = MEGAN inline
 ********
 For CMAQ v5.5, BEIS is the default inline mechanism. MEGAN is optional and requires extra data.
-Step 3: Set Emission Control Flags in CMAQ
+-Step 3: Set Emission Control Flags in CMAQ
 In your run_cctm.csh file:
 ********
 setenv CTM_BIOGEMIS 1
@@ -41,7 +41,7 @@ setenv CTM_BIOGEMIS 1
 1 = BEIS (default, uses MCIP land use + meteorology)
 2 = MEGAN (requires additional inputs)
 ********
-Step 4: Ensure Required Input Files Exist
+-Step 4: Ensure Required Input Files Exist
 CMAQ will read the following MCIP outputs for inline biogenics:
 File	Description
 GRIDCRO2D	Land-use fractions
@@ -55,7 +55,7 @@ bash
 ls $METDIR/GRIDCRO2D*
 ls $METDIR/METCRO2D*
 ********
-Step 5: Set Species Mapping
+-Step 5: Set Species Mapping
 No need to prepare external .emis files for biogenic VOCs like:
 ********
 ISOP (isoprene)
@@ -63,7 +63,7 @@ TERP (terpenes)
 MEOH, FORM, etc.
 ********
 CMAQ calculates these inline from land use and met.
-Step 6: Run WRF-CMAQ
+-Step 6: Run WRF-CMAQ
 After setting up run_cctm.csh:
 ********
 bash
@@ -73,7 +73,6 @@ Check CCTM_LOG output. You should see lines like:
 ********
 scss
 ********
-
 Inline Biogenic Emissions Activated: BEIS
 Also, you’ll see biogenic species (ISOP, TERP) being emitted and processed.
 
