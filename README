@@ -12,4 +12,76 @@ Run scripts: (CRACMM) version 1 including updated formaldehyde chemistry impacti
              run_cctm_Bench_2018_12NE3_CB6R5.csh
 
 Fire Inventory: WRF-Fire
-              
+Inline Biogenic Emission: 
+BEIS (Biogenic Emissions Inventory System) will enable inline biogenic processing in CMAQ. This is typically done during CMAQ preprocessing and run-time using inputs from WRF meteorology and land use.
+Steps: 
+-Step 1: Prepare Meteorology with WRF/MCIP
+WRF outputs processed by MCIP, which prepares:
+3D meteorology (METCRO3D)
+2D surface fields (METCRO2D)
+Land cover info (GRIDCRO2D, LUFRAC, etc.)
+Ensure  MCIP domain is consistent with CMAQ grid.
+
+-Step 2: Enable Inline Biogenic Emissions in CMAQ
+In your run_cctm.csh script, set these environment variables:
+********
+csh
+setenv BIOGEMIS  Y
+setenv MEGAN_BIOGEMIS Y   # Optional: for MEGAN inline (if enabled)
+setenv GRIDDESC  ${GRIDDESC_FILE}
+setenv GRID_NAME ${GRID_NAME}
+setenv CTM_BIOGEMIS 1     # 1 = BEIS inline; 2 = MEGAN inline
+********
+For CMAQ v5.5, BEIS is the default inline mechanism. MEGAN is optional and requires extra data.
+Step 3: Set Emission Control Flags in CMAQ
+In your run_cctm.csh file:
+********
+setenv CTM_BIOGEMIS 1
+0 = no biogenic emissions
+1 = BEIS (default, uses MCIP land use + meteorology)
+2 = MEGAN (requires additional inputs)
+********
+Step 4: Ensure Required Input Files Exist
+CMAQ will read the following MCIP outputs for inline biogenics:
+File	Description
+GRIDCRO2D	Land-use fractions
+METCRO2D	Surface meteorology (temperature, PAR, etc.)
+METCRO3D	3D meteorology for dispersion
+LWMASK	Land-water mask
+LUFRAC_*.nc	Land use fractions by category (if using MEGAN)
+Check if these exist in your input folder ($METDIR). You can list with:
+********
+bash
+ls $METDIR/GRIDCRO2D*
+ls $METDIR/METCRO2D*
+********
+Step 5: Set Species Mapping
+No need to prepare external .emis files for biogenic VOCs like:
+********
+ISOP (isoprene)
+TERP (terpenes)
+MEOH, FORM, etc.
+********
+CMAQ calculates these inline from land use and met.
+Step 6: Run WRF-CMAQ
+After setting up run_cctm.csh:
+********
+bash
+sbatch run_cctm_WRFCMAQ.csh
+********
+Check CCTM_LOG output. You should see lines like:
+********
+scss
+********
+
+Inline Biogenic Emissions Activated: BEIS
+Also, you’ll see biogenic species (ISOP, TERP) being emitted and processed.
+
+Notes
+Item	Notes
+Emission inventory	No separate .emis file needed for biogenics
+Plume rise	Not needed; biogenic sources are low-level
+Photolysis	Inline biogenics depend on PAR, so verify your photolysis fields (J-values) are correct
+Output	You’ll see biogenic contributions in output species like O3, PAN, SOA
+
+
