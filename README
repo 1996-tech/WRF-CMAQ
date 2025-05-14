@@ -5,4 +5,7 @@ rest of the process will remain same.
 Environmental Setup/tools: intel 25.0
                      openmpi 4.* upper
 Run scripts: (CRACMM) version 2 including updated formaldehyde chemistry impacting ozone and secondary organic aerosol formation.
+             script: 
+             Carbon Bond 6 version r3 with aero7 treatment of SOA set up for standard cloud chemistry
+             script: run_cctm_Bench_2018_12NE3_CRACMM2.csh
               
