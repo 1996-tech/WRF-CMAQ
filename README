@@ -10,4 +10,6 @@ Run scripts: (CRACMM) version 1 including updated formaldehyde chemistry impacti
              script: run_cctm_Bench_2018_12NE3_CRACMM2.csh
              Carbon Bond 6 version r3 with aero7 treatment of SOA set up for standard cloud chemistry
              run_cctm_Bench_2018_12NE3_CB6R5.csh
+
+Fire Inventory: WRF-Fire
               
