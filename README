@@ -12,6 +12,8 @@ Run scripts: (CRACMM) version 1 including updated formaldehyde chemistry impacti
              run_cctm_Bench_2018_12NE3_CB6R5.csh
              WRF-CMAQ_inline
              script: run_cctm_Bench_2018_12NE3.WRFCMAQ.csh
+             CRACMM1: Multiphase chemistry, can run inline bioemission simulation
+             script: 
 
 Fire Inventory: WRF-Fire
 Inline Biogenic Emission: 
