@@ -1,0 +1,40 @@
+##################### Daily Average (if required) #####################
+#Python 
+cat > calc_daily_avg.py << 'EOF'
+import xarray as xr
+import os
+
+# Path 
+file_path = '/data/lab/meng/priom_zarrah/CMAQv5.5/CMAQ_REPO/data/output_CCTM_v55_cracmm1_aq_WR705_2018gc2_2018_12US1_wbdust/CCTM_CONC_v55_cracmm1_aq_WR705_2018gc2_2018_12US1_wbdust_20171223.nc'
+output_path = '/data/lab/meng/priom_zarrah/CMAQv5.5/CMAQ_REPO/data/output_CCTM_v55_cracmm1_aq_WR705_2018gc2_2018_12US1_wbdust/CCTM_CONC_v55_cracmm1_aq_WR705_2018gc2_2018_12US1_wbdust_20171223_daily_avg.nc'
+
+# Open the dataset
+print(f"Opening file: {file_path}")
+ds = xr.open_dataset(file_path)
+
+# Calculate daily average (mean over TSTEP dimension)
+print("Calculating daily average...")
+daily_avg = ds.mean(dim='TSTEP')
+
+# Save 
+print(f"Saving to: {output_path}")
+daily_avg.to_netcdf(output_path)
+
+print("Done! Daily average file created.")
+EOF
+
+# Make the script executable
+chmod +x calc_daily_avg.py
+
+
+
+##################### libraries (if not available #####################
+# Check if Python and xarray are available
+module avail python
+module load python/3.9.5  # Adjust this based on what's available 
+
+# Install xarray if needed 
+pip install --user xarray netCDF4
+
+# Run 
+python calc_daily_avg.py
