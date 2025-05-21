@@ -87,4 +87,6 @@ Plume rise	Not needed; biogenic sources are low-level
 Photolysis	Inline biogenics depend on PAR, so verify your photolysis fields (J-values) are correct
 Output	You’ll see biogenic contributions in output species like O3, PAN, SOA
 
+Finer GRID/Grid Modification:
+
 
